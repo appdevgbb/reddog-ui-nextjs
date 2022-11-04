@@ -2,7 +2,7 @@
 import jwt from 'jsonwebtoken'
 
 // ** Mock Adapter
-import mock from 'src/@fake-db/mock'
+import mock from 'src/util/mock'
 
 // ** Types
 import { UserDataType } from 'src/context/types'
