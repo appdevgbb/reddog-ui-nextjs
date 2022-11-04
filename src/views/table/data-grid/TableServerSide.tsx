@@ -1,5 +1,5 @@
 // ** React Imports
-import {useCallback, useEffect, useState} from 'react'
+import {ChangeEvent, useCallback, useEffect, useState} from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
@@ -18,6 +18,7 @@ import ServerSideToolbar from 'src/views/table/data-grid/ServerSideToolbar'
 import {OrdersGridRowType} from "src/@core/utils/types";
 
 type SortType = 'asc' | 'desc' | undefined | null
+
 
 const columns: GridColumns = [
   {

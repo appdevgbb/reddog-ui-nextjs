@@ -1,16 +1,13 @@
 // ** React Imports
-import { useContext } from 'react'
+import {useContext} from 'react'
 
 // ** Context Imports
-import { AbilityContext } from 'src/layouts/components/acl/Can'
+import {AbilityContext} from 'src/layouts/components/acl/Can'
 
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
-import Card from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
 import TriggerNewOrderForm from "../../views/forms/TriggerNewOrderForm";
+import TableServerSide from "../../views/table/data-grid/TableServerSide";
 
 const VirtualCustomers = () => {
   // ** Hooks
@@ -23,13 +20,7 @@ const VirtualCustomers = () => {
       </Grid>
       {ability?.can('read', 'analytics') ? (
         <Grid item md={6} xs={12}>
-          <Card>
-            <CardHeader title='Current Orders' />
-            <CardContent>
-              <Typography sx={{ mb: 4 }}>TODO: Current Orders</Typography>
-              <Typography sx={{ color: 'error.main' }}>TBD</Typography>
-            </CardContent>
-          </Card>
+          <TableServerSide />
         </Grid>
       ) : null}
     </Grid>

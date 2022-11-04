@@ -9,7 +9,7 @@ import InputAdornment from '@mui/material/InputAdornment'
 
 // ** Icons Imports
 import { CartArrowUp } from 'mdi-material-ui'
-import {useState} from "react";
+import React, {useState} from "react";
 import toast from "react-hot-toast";
 import {green} from "@mui/material/colors";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -38,12 +38,17 @@ const TriggerNewOrderForm = () => {
       const result = await response.json();
       setData(result.statusText);
       toast.success('Order placed successfully!');
-    } catch (err) {
-      toast.error(err.message);
+    } catch ({message}) {
+      // @ts-ignore
+      toast.error(message);
     } finally {
       setIsLoading(false);
     }
-  };
+  }
+
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>)=> {
+    setOrderCount(Number(e.target.value))
+  }
 
   return (
     <Card>
@@ -57,7 +62,7 @@ const TriggerNewOrderForm = () => {
                 type='number'
                 label='Number of orders to simulate'
                 placeholder='0'
-                onChange={(v) => setOrderCount(v.target.value) }
+                onChange={handleChange}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
