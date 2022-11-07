@@ -142,15 +142,15 @@ const RechartsAreaChart = ({ direction }: Props) => {
       <CardContent>
         <Box sx={{ display: 'flex', mb: 4 }}>
           <Box sx={{ mr: 6, display: 'flex', alignItems: 'center' }}>
-            <Circle sx={{ mr: 1.5, fontSize: '0.75rem', color: 'rgb(115, 103, 240)' }} />
+            <Circle sx={{ mr: 1.5, fontSize: '0.75rem', color: 'rgb(255, 77, 73)' }} />
             <Typography>Oros</Typography>
           </Box>
           <Box sx={{ mr: 6, display: 'flex', alignItems: 'center' }}>
-            <Circle sx={{ mr: 1.5, fontSize: '0.75rem', color: 'rgba(115, 103, 240, .5)' }} />
+            <Circle sx={{ mr: 1.5, fontSize: '0.75rem', color: 'rgba(255, 77, 73, .5)' }} />
             <Typography>Lorath</Typography>
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Circle sx={{ mr: 1.5, fontSize: '0.75rem', color: 'rgba(115, 103, 240, .2)' }} />
+            <Circle sx={{ mr: 1.5, fontSize: '0.75rem', color: 'rgba(255, 77, 73, .2)' }} />
             <Typography>Myr</Typography>
           </Box>
         </Box>
@@ -161,9 +161,9 @@ const RechartsAreaChart = ({ direction }: Props) => {
               <XAxis dataKey='name' reversed={direction === 'rtl'} />
               <YAxis orientation={direction === 'rtl' ? 'right' : 'left'} />
               <Tooltip content={CustomTooltip} />
-              <Area dataKey='Lorath' stackId='Lorath' stroke='0' fill='rgb(115, 103, 240)' />
-              <Area dataKey='Oros' stackId='Oros' stroke='0' fill='rgba(115, 103, 240, .5)' />
-              <Area dataKey='Myr' stackId='Myr' stroke='0' fill='rgba(115, 103, 240, .2)' />
+              <Area dataKey='Lorath' stackId='Lorath' stroke='0' fill='rgb(255, 77, 73)' />
+              <Area dataKey='Oros' stackId='Oros' stroke='0' fill='rgba(255, 77, 73, .5)' />
+              <Area dataKey='Myr' stackId='Myr' stroke='0' fill='rgba(255, 77, 73, .2)' />
             </AreaChart>
           </ResponsiveContainer>
         </Box>

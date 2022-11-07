@@ -24,8 +24,8 @@ const columns: GridColumns = [
   {
     flex: 0.25,
     minWidth: 180,
-    field: 'firstName',
-    headerName: 'Name',
+    field: 'productName',
+    headerName: 'Product',
     renderCell: (params: GridRenderCellParams) => {
       const { row } = params
 
@@ -46,7 +46,7 @@ const columns: GridColumns = [
   {
     flex: 0.175,
     minWidth: 120,
-    headerName: 'Date',
+    headerName: 'Created',
     field: 'orderCompletedDate',
     renderCell: (params: GridRenderCellParams) => (
       <Typography variant='body2' sx={{ color: 'text.primary' }}>
@@ -57,8 +57,8 @@ const columns: GridColumns = [
   {
     flex: 0.175,
     minWidth: 110,
-    field: 'loyaltyId',
-    headerName: 'Loyalty ID',
+    field: 'unitPrice',
+    headerName: 'Unit Price',
     renderCell: (params: GridRenderCellParams) => (
       <Typography variant='body2' sx={{ color: 'text.primary' }}>
         {params.row.unitPrice}
@@ -67,9 +67,9 @@ const columns: GridColumns = [
   },
   {
     flex: 0.125,
-    field: 'orderTotal',
+    field: 'unitCost',
     minWidth: 150,
-    headerName: 'Order total',
+    headerName: 'Unit Cost',
     renderCell: (params: GridRenderCellParams) => (
       <Typography variant='body2' sx={{ color: 'text.primary' }}>
         ${params.row.unitCost}
@@ -121,7 +121,7 @@ const ProductsTable = () => {
       fetchTableData(newModel[0].sort,newModel[0].field)
     } else {
       setSort('asc')
-      setSortColumn('productId')
+      setSortColumn('productName')
     }
   }
 

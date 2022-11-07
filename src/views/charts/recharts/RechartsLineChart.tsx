@@ -13,28 +13,11 @@ import ArrowUp from 'mdi-material-ui/ArrowUp'
 
 // ** Custom Components Imports
 import CustomChip from 'src/@core/components/mui/chip'
+import {useEffect, useState} from "react";
 
 interface Props {
   direction: 'ltr' | 'rtl'
 }
-
-const data = [
-  { pv: 280, name: '7/12' },
-  { pv: 200, name: '8/12' },
-  { pv: 220, name: '9/12' },
-  { pv: 180, name: '10/12' },
-  { pv: 270, name: '11/12' },
-  { pv: 250, name: '12/12' },
-  { pv: 70, name: '13/12' },
-  { pv: 90, name: '14/12' },
-  { pv: 200, name: '15/12' },
-  { pv: 150, name: '16/12' },
-  { pv: 160, name: '17/12' },
-  { pv: 100, name: '18/12' },
-  { pv: 150, name: '19/12' },
-  { pv: 100, name: '20/12' },
-  { pv: 50, name: '21/12' }
-]
 
 const CustomTooltip = (props: TooltipProps<any, any>) => {
   // ** Props
@@ -43,7 +26,7 @@ const CustomTooltip = (props: TooltipProps<any, any>) => {
   if (active && payload) {
     return (
       <div className='recharts-custom-tooltip'>
-        <span>{`${payload[0].value}%`}</span>
+        <span>{`${payload[0].value}`}</span>
       </div>
     )
   }
@@ -52,12 +35,41 @@ const CustomTooltip = (props: TooltipProps<any, any>) => {
 }
 
 const RechartsLineChart = ({ direction }: Props) => {
+
+  const [data, setData] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  const MINUTE_MS = 50000
+
+  useEffect(() => {
+    function fetchOrdersPerDay() {
+      fetch('/api/orders/day')
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          setData(data)
+          setLoading(false)
+        })
+        .catch(error => {
+          setError(error)
+          setLoading(false)
+        })
+    }
+    fetchOrdersPerDay()
+    const interval = setInterval(() => {
+    fetchOrdersPerDay();
+    }, MINUTE_MS)
+
+return () => clearInterval(interval)
+  }, [])
+
   return (
     <Card>
       <CardHeader
         title='Orders over time'
         titleTypographyProps={{ variant: 'h6' }}
-        subheader='versus 10 mins ago'
+        subheader='daily order count for all stores'
         subheaderTypographyProps={{ variant: 'caption', sx: { color: 'text.disabled' } }}
         sx={{
           flexDirection: ['column', 'row'],
@@ -68,7 +80,9 @@ const RechartsLineChart = ({ direction }: Props) => {
         action={
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Typography variant='h6' sx={{ mr: 5 }}>
-              2,112
+              {data.reduce<number>((accumulator, obj) => {
+                return accumulator + obj.pv;
+              }, 0)}
             </Typography>
             <CustomChip
               skin='light'
@@ -89,10 +103,10 @@ const RechartsLineChart = ({ direction }: Props) => {
           <ResponsiveContainer>
             <LineChart height={350} data={data} style={{ direction }} margin={{ left: -20 }}>
               <CartesianGrid />
-              <XAxis dataKey='name' reversed={direction === 'rtl'} />
+              <XAxis dataKey='label' reversed={direction === 'rtl'} />
               <YAxis orientation={direction === 'rtl' ? 'right' : 'left'} />
               <Tooltip content={CustomTooltip} />
-              <Line dataKey='pv' stroke='#ff9f43' strokeWidth={3} />
+              <Line dataKey='pv' stroke='#ff4d49' strokeWidth={3} animationEasing={"linear"} />
             </LineChart>
           </ResponsiveContainer>
         </Box>

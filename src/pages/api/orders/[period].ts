@@ -5,19 +5,16 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
   const SERVER_URL = process.env.SERVER_URL
 
   const {
-    query: { id, name },
+    query: { period },
     method,
   } = req
 
   switch (method) {
     case 'GET':
       // Get orders from backend
-      const orders = await fetch(`${SERVER_URL}/orders`)
-      const ordersJson = await orders.json()
-      res.status(200).json(ordersJson)
-      break
-    case 'PUT':
-      res.status(200).json({ id, name: name || `User ${id}` })
+      const chartKv = await fetch(`${SERVER_URL}/orders/${period}`)
+      const chartKvJson = await chartKv.json()
+      res.status(200).json(chartKvJson)
       break
     default:
       res.setHeader('Allow', ['GET', 'PUT'])
