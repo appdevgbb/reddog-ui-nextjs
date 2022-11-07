@@ -107,11 +107,6 @@ const CardWidgetsProfitPerOrder = () => {
       <CardHeader
         title='Profit / Order'
         subheader='Last 7 days'
-        action={
-          <IconButton size='small' aria-label='settings' className='card-more-options'>
-            <DotsVertical />
-          </IconButton>
-        }
       />
       <CardContent
         sx={{

@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography'
 import PageHeader from 'src/@core/components/page-header'
 
 // ** Demo Components Imports
-import TableServerSide from 'src/views/table/data-grid/TableServerSide'
+import ProductsTable from "../../views/table/data-grid/ProductsTable";
 
 const Products = () => {
   return (
@@ -27,7 +27,7 @@ const Products = () => {
         }
       />
       <Grid item xs={12}>
-        <TableServerSide />
+        <ProductsTable />
       </Grid>
     </Grid>
   )

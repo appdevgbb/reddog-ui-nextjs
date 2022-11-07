@@ -113,11 +113,6 @@ const CardWidgetsSalesProfit = () => {
         subheader='For all locations'
         subheaderTypographyProps={{ sx: { lineHeight: 1.429 } }}
         titleTypographyProps={{ sx: { letterSpacing: '0.15px' } }}
-        action={
-          <IconButton size='small' aria-label='settings' className='card-more-options'>
-            <DotsVertical />
-          </IconButton>
-        }
       />
       <CardContent
         sx={{
@@ -133,7 +128,7 @@ const CardWidgetsSalesProfit = () => {
               </CustomAvatar>
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <Typography variant='caption'>Net Income</Typography>
-                <Typography sx={{ fontWeight: 600 }}>$438.5k</Typography>
+                <Typography sx={{ fontWeight: 600 }}> {`$${(Math.random() * 1000000).toFixed(2)}`}</Typography>
               </Box>
             </Box>
           </Grid>
@@ -144,7 +139,7 @@ const CardWidgetsSalesProfit = () => {
               </CustomAvatar>
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <Typography variant='caption'>Expense</Typography>
-                <Typography sx={{ fontWeight: 600 }}>$22.4k</Typography>
+                <Typography sx={{ fontWeight: 600 }}>{`$${(Math.random() * 10000).toFixed(2)}`}</Typography>
               </Box>
             </Box>
           </Grid>

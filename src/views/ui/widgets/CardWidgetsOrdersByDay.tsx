@@ -81,11 +81,6 @@ const CardWidgetsOrdersByDay = () => {
         subheader='Total 2.2k Orders'
         subheaderTypographyProps={{ sx: { lineHeight: 1.429 } }}
         titleTypographyProps={{ sx: { letterSpacing: '0.15px' } }}
-        action={
-          <IconButton size='small' aria-label='settings' className='card-more-options'>
-            <DotsVertical />
-          </IconButton>
-        }
       />
       <CardContent sx={{ '& .apexcharts-canvas .apexcharts-text': { fill: theme.palette.text.secondary } }}>
         <ReactApexcharts type='bar' height={222} options={options} series={[{ data: [38, 55, 48, 65, 80, 38, 48] }]} />
