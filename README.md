@@ -22,4 +22,4 @@ yarn install
 yarn dev
 ```
 
-[^fn]: [Starter-kit](https://pixinvent.com/materialize-material-design-admin-template/landing/)
+[^fn]: [Components](https://mui.com/material-ui/getting-started/overview/)

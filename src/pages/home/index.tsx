@@ -17,7 +17,7 @@ import RechartsAreaChart from 'src/views/charts/recharts/RechartsAreaChart'
 
 // ** Third Party Styles Imports
 import 'react-datepicker/dist/react-datepicker.css'
-import CardWidgetsWeeklyOverview from "../../views/ui/widgets/CardWidgetsWeeklyOverview";
+import CardWidgetsProfitPerOrder from "../../views/ui/widgets/CardWidgetsProfitPerOrder";
 import CardWidgetsSalesProfit from "../../views/ui/widgets/CardWidgetsSalesProfit";
 import CardWidgetsOrdersByDay from "../../views/ui/widgets/CardWidgetsOrdersByDay";
 import CardWidgetsSvcFulfillment from "../../views/ui/widgets/CardWidgetsSvcFulfillment";
@@ -50,7 +50,7 @@ const Home = () => {
         <CardWidgetsOrdersByDay />
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
-        <CardWidgetsSvcFulfillment />
+        <CardWidgetsProfitPerOrder />
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
         <CardWidgetsSalesProfit />
@@ -68,12 +68,6 @@ const Home = () => {
             </Grid>
           </DatePickerWrapper>
         </RechartsWrapper>
-      </Grid>
-      <Grid item xs={12} md={8}>
-        <TableServerSide />
-      </Grid>
-      <Grid item xs={12} md={4}>
-        <CardWidgetsWeeklyOverview />
       </Grid>
     </Grid>
   )

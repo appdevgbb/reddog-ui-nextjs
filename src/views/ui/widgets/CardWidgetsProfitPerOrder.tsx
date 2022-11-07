@@ -32,7 +32,7 @@ const series = [
   }
 ]
 
-const CardWidgetsWeeklyOverview = () => {
+const CardWidgetsProfitPerOrder = () => {
   // ** Hook
   const theme = useTheme()
 
@@ -106,6 +106,7 @@ const CardWidgetsWeeklyOverview = () => {
     <Card>
       <CardHeader
         title='Profit / Order'
+        subheader='Last 7 days'
         action={
           <IconButton size='small' aria-label='settings' className='card-more-options'>
             <DotsVertical />
@@ -120,14 +121,13 @@ const CardWidgetsWeeklyOverview = () => {
       >
         <ReactApexcharts type='line' height={230} series={series} options={options} />
         <Box sx={{ mb: 4, display: 'flex', alignItems: 'center' }}>
-          <Typography sx={{ mr: 4 }} variant='h5'>
-            $xx
+          <Typography sx={{ mr: 4 }} variant='h4'>
+            {`$${(Math.random() * 1000).toFixed(2)}`}
           </Typography>
-          <Typography variant='body2'>Summary</Typography>
         </Box>
       </CardContent>
     </Card>
   )
 }
 
-export default CardWidgetsWeeklyOverview
+export default CardWidgetsProfitPerOrder
