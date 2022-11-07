@@ -17,15 +17,15 @@ import Alert from "@mui/material/Alert";
 
 const TriggerNewOrderForm = () => {
   const [data, setData] = useState(null);
-  const [orderCount, setOrderCount] = useState(0);
+  const [numOrders, setnumOrders] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = async () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`/api/simulate-orders?orderCount=${orderCount}`, {
-        method: 'GET',
+      const response = await fetch(`/api/stimulate-orders?numOrders=${numOrders}`, {
+        method: 'POST',
         headers: {
           Accept: 'application/json',
         },
@@ -34,8 +34,8 @@ const TriggerNewOrderForm = () => {
       if (!response.ok) {
         throw new Error(`Error! status: ${response.status}`);
       }
-      console.log(response);
       const result = await response.json();
+      console.log(result);
       setData(result.statusText);
       toast.success('Order placed successfully!');
     } catch ({message}) {
@@ -47,12 +47,12 @@ const TriggerNewOrderForm = () => {
   }
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>)=> {
-    setOrderCount(Number(e.target.value))
+    setnumOrders(Number(e.target.value))
   }
 
   return (
     <Card>
-      <CardHeader title='Simulate order creation' titleTypographyProps={{ variant: 'h6' }} />
+      <CardHeader title='Stimulate order creation' titleTypographyProps={{ variant: 'h6' }} />
       <CardContent>
         <form onSubmit={e => e.preventDefault()}>
           <Grid container spacing={5}>

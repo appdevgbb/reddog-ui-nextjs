@@ -7,7 +7,7 @@ import {AbilityContext} from 'src/layouts/components/acl/Can'
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
 import TriggerNewOrderForm from "../../views/forms/TriggerNewOrderForm";
-import TableServerSide from "../../views/table/data-grid/TableServerSide";
+import StimulatedOrdersTable from "../../views/table/data-grid/StimulatedOrdersTable";
 
 const VirtualCustomers = () => {
   // ** Hooks
@@ -20,7 +20,7 @@ const VirtualCustomers = () => {
       </Grid>
       {ability?.can('read', 'analytics') ? (
         <Grid item md={6} xs={12}>
-          <TableServerSide />
+          <StimulatedOrdersTable />
         </Grid>
       ) : null}
     </Grid>
