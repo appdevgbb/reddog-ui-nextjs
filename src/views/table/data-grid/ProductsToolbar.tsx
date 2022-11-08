@@ -1,14 +1,16 @@
 // ** React Imports
 // ** MUI Imports
-import Box from '@mui/material/Box'
 import {styled} from '@mui/material/styles'
 import Button from '@mui/material/Button'
 import {GridToolbarContainer} from '@mui/x-data-grid'
 
 // ** Icons Imports
-import {Reload} from "mdi-material-ui";
-import Grid from "@mui/material/Grid";
+import {MenuDown} from "mdi-material-ui";
+import {ButtonGroup, ClickAwayListener, Grow, MenuItem, MenuList, Popper} from "@mui/material";
+import {SyntheticEvent, useRef, useState} from "react";
+import Paper from "@mui/material/Paper";
 
+const options = ['Add Product', 'Generate Product Description', 'Translate to French']
 
 const StyledGridToolbarContainer = styled(GridToolbarContainer)({
   p: 2,
@@ -16,22 +18,80 @@ const StyledGridToolbarContainer = styled(GridToolbarContainer)({
   display: 'flex',
   flexWrap: 'wrap',
   alignItems: 'flex-start',
-  justifyContent: 'space-between'
+  justifyContent: 'space-between',
+  marginBottom: '1rem'
 })
 
 const ProductsToolbar = () => {
+  const [open, setOpen] = useState<boolean>(false)
+  const [selectedIndex, setSelectedIndex] = useState<number>(1)
+
+  // ** Ref
+  const anchorRef = useRef<HTMLDivElement | null>(null)
+
+  const handleClick = () => {
+    console.info(`You clicked '${options[selectedIndex]}'`)
+  }
+
+  const handleMenuItemClick = (event: SyntheticEvent, index: number) => {
+    setSelectedIndex(index)
+    setOpen(false)
+  }
+
+  const handleToggle = () => {
+    setOpen(prevOpen => !prevOpen)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
+  }
+
   return (
     <StyledGridToolbarContainer>
-      <Grid item xs={3}>
-        <Button variant='contained' startIcon={<Reload/>}>
-          Generate Product Name
+      <ButtonGroup variant='contained' ref={anchorRef} aria-label='split button'>
+        <Button onClick={handleClick}>{options[selectedIndex]}</Button>
+        <Button
+          size='small'
+          aria-haspopup='menu'
+          onClick={handleToggle}
+          aria-label='select merge strategy'
+          aria-expanded={open ? 'true' : undefined}
+          aria-controls={open ? 'split-button-menu' : undefined}
+        >
+          <MenuDown />
         </Button>
-      </Grid>
-      <Grid item xs={3}>
-        <Button variant='contained' startIcon={<Reload/>}>
-          Translate Product Name
-        </Button>
-      </Grid>
+      </ButtonGroup>
+      <Popper
+        open={open}
+        anchorEl={anchorRef.current}
+        role={undefined}
+        transition
+        disablePortal
+        placement={"top"}>
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList id='split-button-menu'>
+                  {options.map((option, index) => (
+                    <MenuItem
+                      key={option}
+                      disabled={index === 2}
+                      selected={index === selectedIndex}
+                      onClick={event => handleMenuItemClick(event, index)}
+                    >
+                      {option}
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
     </StyledGridToolbarContainer>
   )
 }
