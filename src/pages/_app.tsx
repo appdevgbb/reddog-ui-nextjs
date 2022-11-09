@@ -61,6 +61,8 @@ import 'react-perfect-scrollbar/dist/css/styles.css'
 
 // ** Global css styles
 import '../../styles/globals.css'
+import {store} from "../store";
+import {Provider} from "react-redux";
 
 // ** Extend App Props with Emotion
 type ExtendedAppProps = AppProps & {
@@ -115,7 +117,7 @@ const App = (props: ExtendedAppProps) => {
   const aclAbilities = Component.acl ?? defaultACLObj
 
   return (
-
+    <Provider store={store}>
       <CacheProvider value={emotionCache}>
         <Head>
           <title>{`${themeConfig.templateName} - Pharmacy`}</title>
@@ -150,7 +152,7 @@ const App = (props: ExtendedAppProps) => {
           </SettingsProvider>
         </AuthProvider>
       </CacheProvider>
-
+  </Provider>
   )
 }
 
