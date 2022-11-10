@@ -71,7 +71,7 @@ const columns: GridColumns = [
   }
 ]
 
-const StimulatedOrdersTable = () => {
+const SimulatedOrdersTable = () => {
   // ** State
   const [page, setPage] = useState(0)
   const [total, setTotal] = useState<number>(0)
@@ -120,7 +120,7 @@ const StimulatedOrdersTable = () => {
 
   return (
     <Card>
-      <CardHeader title='Stimulated orders' />
+      <CardHeader title='Simulated orders' />
       <DataGrid
         autoHeight
         pagination
@@ -140,4 +140,4 @@ const StimulatedOrdersTable = () => {
   )
 }
 
-export default StimulatedOrdersTable
+export default SimulatedOrdersTable

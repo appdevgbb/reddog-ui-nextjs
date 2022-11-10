@@ -14,7 +14,7 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
       // Get orders from backend
       const requestHeaders: HeadersInit = new Headers();
       requestHeaders.set('x-source', 'nextjs');
-      const response = await fetch(`${VIRTUAL_CUSTOMERS_URL}/stimulate-orders?numOrders=${numOrders}`, {
+      const response = await fetch(`${VIRTUAL_CUSTOMERS_URL}/simulate-orders?numOrders=${numOrders}`, {
         method: 'POST',
         headers: requestHeaders,
       })
