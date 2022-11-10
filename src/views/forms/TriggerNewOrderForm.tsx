@@ -24,7 +24,7 @@ const TriggerNewOrderForm = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`/api/stimulate-orders?numOrders=${numOrders}`, {
+      const response = await fetch(`/api/simulate-orders?numOrders=${numOrders}`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -52,7 +52,7 @@ const TriggerNewOrderForm = () => {
 
   return (
     <Card>
-      <CardHeader title='Stimulate order creation' titleTypographyProps={{ variant: 'h6' }} />
+      <CardHeader title='Simulate order creation' titleTypographyProps={{ variant: 'h6' }} />
       <CardContent>
         <form onSubmit={e => e.preventDefault()}>
           <Grid container spacing={5}>
