@@ -25,6 +25,8 @@ import {addUser} from 'src/store/user'
 
 // ** Types Imports
 import {AppDispatch} from 'src/store'
+import Grid from "@mui/material/Grid";
+import DialogEditUserInfo from "../pages/dialog/DialogEditUserInfo";
 
 interface SidebarAddProductType {
   open: boolean
@@ -98,7 +100,7 @@ const SidebarAddProduct = (props: SidebarAddProductType) => {
   })
 
   const onSubmit = (data: ProductData) => {
-    dispatch(addUser({ ...data, role, currentPlan: plan }))
+    dispatch(addUser({ ...data }))
     toggle()
     reset()
   }
@@ -123,6 +125,11 @@ const SidebarAddProduct = (props: SidebarAddProductType) => {
       </Header>
       <Box sx={{ p: 5 }}>
         <form onSubmit={handleSubmit(onSubmit)}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sx={{ mb: '1em'}}>
+              <DialogEditUserInfo />
+            </Grid>
+          </Grid>
           <FormControl fullWidth sx={{ mb: 6 }}>
             <Controller
               name='productName'
