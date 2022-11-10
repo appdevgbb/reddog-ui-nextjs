@@ -17,7 +17,7 @@ import DialogActions from '@mui/material/DialogActions'
 
 // ** Icons Imports
 import Close from 'mdi-material-ui/Close'
-import {MessageOutline, RobotHappyOutline} from 'mdi-material-ui'
+import {BookmarkOutline, MessageOutline, RobotHappyOutline} from 'mdi-material-ui'
 import {Fab, InputAdornment} from "@mui/material";
 import toast from "react-hot-toast";
 import {Alert, AlertTitle} from "@mui/material";
@@ -126,7 +126,7 @@ const DialogEditUserInfo = () => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
-                      <MessageOutline />
+                      <BookmarkOutline />
                     </InputAdornment>
                   )
                 }}/>
