@@ -27,7 +27,9 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/pages ./pages
+COPY --from=builder /app/src ./src
+COPY --from=builder /app/styles ./styles
+COPY --from=builder /app/next-env.d.ts ./next-env.d.ts
 
 USER nextjs
 
@@ -37,5 +39,5 @@ EXPOSE 3000
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry.
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV SERVER_URL http://localhost:8087
 CMD ["yarn", "start"]
