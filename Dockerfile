@@ -1,31 +1,41 @@
-FROM node:19-alpine3.16
-
+# Install dependencies only when needed
+FROM node:alpine AS deps
 RUN apk add --no-cache libc6-compat
-RUN npm i -g npm
+WORKDIR /app
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
 
-EXPOSE 3000
 
-ENV PORT 3000
-ENV NODE_ENV production
-
-WORKDIR /.next
-
-COPY package.json .
-
-RUN npm install --omit=optional
-RUN npx browserslist@latest --update-db
-RUN npx next telemetry disable
-
-# need to install linux specific swc builds
-RUN npm install -D @swc/cli @swc/core
-
+# Rebuild the source code only when needed
+FROM node:alpine AS builder
+WORKDIR /app
 COPY . .
+COPY --from=deps /app/node_modules ./node_modules
+ARG NODE_ENV=devolpement
+RUN echo ${NODE_ENV}
+RUN NODE_ENV=${NODE_ENV} yarn build
 
-RUN npm run build
-
+# Production image, copy all the files and run next
+FROM node:alpine AS runner
+WORKDIR /app
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
+# You only need to copy next.config.js if you are NOT using the default configuration
+COPY --from=builder /app/next.config.js ./next.config.js
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/pages ./pages
+
 USER nextjs
 
-CMD [ "npm", "start" ]
+# Expose
+EXPOSE 3000
+
+# Next.js collects completely anonymous telemetry data about general usage.
+# Learn more here: https://nextjs.org/telemetry
+# Uncomment the following line in case you want to disable telemetry.
+ENV NEXT_TELEMETRY_DISABLED 1
+CMD ["yarn", "start"]

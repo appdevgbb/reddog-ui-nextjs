@@ -26,10 +26,7 @@ const FooterContent = () => {
           <Link target='_blank' href='https://github.com/appdevgbb/reddog-asa'>
             Source
           </Link>
-          <Link
-            target='_blank'
-            href='https://github.com/appdevgbb/reddog-asa/wiki'
-          >
+          <Link target='_blank' href='https://github.com/appdevgbb/reddog-asa/wiki'>
             Docs
           </Link>
           <Link target='_blank' href='https://github.com/appdevgbb/reddog-asa/issues'>

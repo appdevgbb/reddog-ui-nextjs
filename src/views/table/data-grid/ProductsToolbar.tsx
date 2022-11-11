@@ -1,14 +1,14 @@
 // ** React Imports
 // ** MUI Imports
-import {styled} from '@mui/material/styles'
+import { styled } from '@mui/material/styles'
 import Button from '@mui/material/Button'
-import {GridToolbarContainer} from '@mui/x-data-grid'
+import { GridToolbarContainer } from '@mui/x-data-grid'
 
 // ** Icons Imports
-import {MenuDown} from "mdi-material-ui";
-import {ButtonGroup, ClickAwayListener, Grow, MenuItem, MenuList, Popper} from "@mui/material";
-import {SyntheticEvent, useRef, useState} from "react";
-import Paper from "@mui/material/Paper";
+import { MenuDown } from 'mdi-material-ui'
+import { ButtonGroup, ClickAwayListener, Grow, MenuItem, MenuList, Popper } from '@mui/material'
+import { SyntheticEvent, useRef, useState } from 'react'
+import Paper from '@mui/material/Paper'
 
 const options = ['Add Product', 'Generate Product Description', 'Translate to French']
 
@@ -61,13 +61,7 @@ const ProductsToolbar = () => {
           <MenuDown />
         </Button>
       </ButtonGroup>
-      <Popper
-        open={open}
-        anchorEl={anchorRef.current}
-        role={undefined}
-        transition
-        disablePortal
-        placement={"top"}>
+      <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal placement={'top'}>
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}

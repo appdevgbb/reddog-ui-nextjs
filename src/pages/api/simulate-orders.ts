@@ -1,22 +1,21 @@
-import type {NextApiRequest, NextApiResponse} from 'next/types'
+import type { NextApiRequest, NextApiResponse } from 'next/types'
 
 export default async function userHandler(req: NextApiRequest, res: NextApiResponse) {
-
   const VIRTUAL_CUSTOMERS_URL = process.env.VIRTUAL_CUSTOMERS_URL
 
   const {
-    query: {numOrders},
-    method,
+    query: { numOrders },
+    method
   } = req
 
   switch (method) {
     case 'POST':
       // Get orders from backend
-      const requestHeaders: HeadersInit = new Headers();
-      requestHeaders.set('x-source', 'nextjs');
+      const requestHeaders: HeadersInit = new Headers()
+      requestHeaders.set('x-source', 'nextjs')
       const response = await fetch(`${VIRTUAL_CUSTOMERS_URL}/simulate-orders?numOrders=${numOrders}`, {
         method: 'POST',
-        headers: requestHeaders,
+        headers: requestHeaders
       })
       const responseJson = await response.json()
       console.log('response', responseJson)

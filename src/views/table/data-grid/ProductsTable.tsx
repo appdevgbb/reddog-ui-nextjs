@@ -1,12 +1,12 @@
 // ** React Imports
-import {useCallback, useEffect, useState} from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
-import {DataGrid, GridColumns, GridRenderCellParams, GridSortModel} from '@mui/x-data-grid'
+import { DataGrid, GridColumns, GridRenderCellParams, GridSortModel } from '@mui/x-data-grid'
 
 // ** ThirdParty Components
 import axios from 'axios'
@@ -14,11 +14,10 @@ import axios from 'axios'
 // ** Custom Components
 
 // ** Types Imports
-import {OrdersGridRowType} from "src/@core/utils/types";
-import ProductsToolbar from "./ProductsToolbar";
+import { OrdersGridRowType } from 'src/@core/utils/types'
+import ProductsToolbar from './ProductsToolbar'
 
 type SortType = 'asc' | 'desc' | undefined | null
-
 
 const columns: GridColumns = [
   {
@@ -118,13 +117,12 @@ const ProductsTable = () => {
     if (newModel.length) {
       setSort(newModel[0].sort)
       setSortColumn(newModel[0].field)
-      fetchTableData(newModel[0].sort,newModel[0].field)
+      fetchTableData(newModel[0].sort, newModel[0].field)
     } else {
       setSort('asc')
       setSortColumn('productName')
     }
   }
-
 
   return (
     <Card>

@@ -12,17 +12,17 @@ const Locations = () => {
         <Card>
           <CardHeader title='Store Locations'></CardHeader>
           <CardContent>
-          <BingMapsReact
-      bingMapsKey={process.env.NEXT_PUBLIC_BING_MAPS_KEY}
-      height="800px"
-      mapOptions={{
-        navigationBarMode: "square",
-      }}
-      width="100%"
-      viewOptions={{
-        mapTypeId: "road"
-      }}
-    />
+            <BingMapsReact
+              bingMapsKey={process.env.NEXT_PUBLIC_BING_MAPS_KEY}
+              height='800px'
+              mapOptions={{
+                navigationBarMode: 'square'
+              }}
+              width='100%'
+              viewOptions={{
+                mapTypeId: 'road'
+              }}
+            />
           </CardContent>
         </Card>
       </Grid>

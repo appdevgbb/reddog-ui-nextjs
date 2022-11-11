@@ -1,9 +1,9 @@
 // ** Icon imports
-import ViewDashboardOutline from 'mdi-material-ui/ViewDashboardOutline';
+import ViewDashboardOutline from 'mdi-material-ui/ViewDashboardOutline'
 import MapMarkerRadiusOutline from 'mdi-material-ui/MapMarkerRadiusOutline'
 import AccountGroupOutline from 'mdi-material-ui/AccountGroupOutline'
-import { WrenchOutline } from 'mdi-material-ui';
-import { CartOutline } from 'mdi-material-ui';
+import { WrenchOutline } from 'mdi-material-ui'
+import { CartOutline } from 'mdi-material-ui'
 
 // ** Type import
 import { HorizontalNavItemsType } from 'src/@core/layouts/types'

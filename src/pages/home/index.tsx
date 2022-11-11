@@ -1,11 +1,11 @@
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
-import {useEffect, useState} from "react";
+import { useEffect, useState } from 'react'
 
 // ** MUI Imports
 // ** Custom Components Imports
 // ** Hooks
-import {useSettings} from 'src/@core/hooks/useSettings'
+import { useSettings } from 'src/@core/hooks/useSettings'
 
 // ** Styled Components
 import RechartsWrapper from 'src/@core/styles/libs/recharts'
@@ -17,14 +17,11 @@ import RechartsAreaChart from 'src/views/charts/recharts/RechartsAreaChart'
 
 // ** Third Party Styles Imports
 import 'react-datepicker/dist/react-datepicker.css'
-import CardWidgetsProfitPerOrder from "../../views/ui/widgets/CardWidgetsProfitPerOrder";
-import CardWidgetsSalesProfit from "../../views/ui/widgets/CardWidgetsSalesProfit";
-import CardWidgetsOrdersByDay from "../../views/ui/widgets/CardWidgetsOrdersByDay";
-import CardWidgetsSvcFulfillment from "../../views/ui/widgets/CardWidgetsSvcFulfillment";
-import TableServerSide from "../../views/table/data-grid/TableServerSide";
+import CardWidgetsProfitPerOrder from '../../views/ui/widgets/CardWidgetsProfitPerOrder'
+import CardWidgetsSalesProfit from '../../views/ui/widgets/CardWidgetsSalesProfit'
+import CardWidgetsOrdersByDay from '../../views/ui/widgets/CardWidgetsOrdersByDay'
 
 const Home = () => {
-
   const [stats, setStats] = useState(null)
 
   const MINUTE_MS = 500000
@@ -34,14 +31,14 @@ const Home = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       fetch('https://63594e33ff3d7bddb99ee138.mockapi.io/stats/1')
-        .then((res) => res.json())
-        .then((data) => {
+        .then(res => res.json())
+        .then(data => {
           console.log(data)
           setStats(data.stats)
         })
-    }, MINUTE_MS);
+    }, MINUTE_MS)
 
-    return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+    return () => clearInterval(interval) // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
   }, [stats])
 
   return (

@@ -1,5 +1,5 @@
 // ** React Imports
-import {forwardRef, ReactElement, Ref, useState} from 'react'
+import { forwardRef, ReactElement, Ref, useState } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
@@ -11,16 +11,16 @@ import TextField from '@mui/material/TextField'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
-import Fade, {FadeProps} from '@mui/material/Fade'
+import Fade, { FadeProps } from '@mui/material/Fade'
 import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
 
 // ** Icons Imports
 import Close from 'mdi-material-ui/Close'
-import {BookmarkOutline, MessageOutline, RobotHappyOutline} from 'mdi-material-ui'
-import {Fab, InputAdornment} from "@mui/material";
-import toast from "react-hot-toast";
-import {Alert, AlertTitle} from "@mui/material";
+import { BookmarkOutline, MessageOutline, RobotHappyOutline } from 'mdi-material-ui'
+import { Fab, InputAdornment } from '@mui/material'
+import toast from 'react-hot-toast'
+import { Alert, AlertTitle } from '@mui/material'
 
 const Transition = forwardRef(function Transition(
   props: FadeProps & { children?: ReactElement<any, any> },
@@ -42,26 +42,25 @@ const DialogEditUserInfo = () => {
         method: 'POST',
         body: JSON.stringify({ product_description: description, seed_words: seed }),
         headers: {
-          Accept: 'application/json',
-        },
-      });
+          Accept: 'application/json'
+        }
+      })
 
       if (!response.ok) {
-        throw new Error(`Error! status: ${response.status}`);
+        throw new Error(`Error! status: ${response.status}`)
       }
-      const result = await response.json();
-      console.log(result);
-      setOpenAiResponse(result.output);
-      toast.success('Successfully generated product name!');
-    } catch ({message}) {
+      const result = await response.json()
+      console.log(result)
+      setOpenAiResponse(result.output)
+      toast.success('Successfully generated product name!')
+    } catch ({ message }) {
       // @ts-ignore
-      toast.error(message);
+      toast.error(message)
     } finally {
       // @ts-ignore
-      toast.dismiss();
+      toast.dismiss()
     }
   }
-
 
   return (
     <Card>
@@ -70,7 +69,9 @@ const DialogEditUserInfo = () => {
         <Typography variant='h6' sx={{ mb: 4 }}>
           GPT-3 helper
         </Typography>
-        <Typography sx={{ mb: 3 }}>Need help with Product naming? Use Azure OpenAI's GPT-3 model (yes, same one that is used to train Dall-E!)</Typography>
+        <Typography sx={{ mb: 3 }}>
+          Need help with Product naming? Use Azure OpenAI's GPT-3 model (yes, same one that is used to train Dall-E!)
+        </Typography>
         <Button variant='contained' onClick={() => setShow(true)}>
           Show
         </Button>
@@ -106,7 +107,9 @@ const DialogEditUserInfo = () => {
                 minRows={3}
                 label='Product Description'
                 placeholder='Alleviates pain...'
-                onChange={e => { setDescription(e.currentTarget.value)}}
+                onChange={e => {
+                  setDescription(e.currentTarget.value)
+                }}
                 sx={{ '& .MuiOutlinedInput-root': { alignItems: 'baseline' } }}
                 InputProps={{
                   startAdornment: (
@@ -122,14 +125,17 @@ const DialogEditUserInfo = () => {
                 fullWidth
                 label='Seed'
                 placeholder='medicine,pills,...'
-                onChange={e => { setSeed(e.currentTarget.value)}}
+                onChange={e => {
+                  setSeed(e.currentTarget.value)
+                }}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
                       <BookmarkOutline />
                     </InputAdornment>
                   )
-                }}/>
+                }}
+              />
             </Grid>
 
             <Grid item xs={12}>
@@ -139,12 +145,13 @@ const DialogEditUserInfo = () => {
               </Fab>
             </Grid>
             {openAiResponse && (
-            <Grid item xs={12}>
-              <Alert severity='success'>
-                <AlertTitle>Response from GPT-3</AlertTitle>
-                {openAiResponse}
-              </Alert>
-            </Grid> )}
+              <Grid item xs={12}>
+                <Alert severity='success'>
+                  <AlertTitle>Response from GPT-3</AlertTitle>
+                  {openAiResponse}
+                </Alert>
+              </Grid>
+            )}
           </Grid>
         </DialogContent>
         <DialogActions sx={{ pb: { xs: 8, sm: 12.5 }, justifyContent: 'center' }}>

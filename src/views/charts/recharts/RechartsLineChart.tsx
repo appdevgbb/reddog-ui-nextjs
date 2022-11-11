@@ -13,7 +13,7 @@ import ArrowUp from 'mdi-material-ui/ArrowUp'
 
 // ** Custom Components Imports
 import CustomChip from 'src/@core/components/mui/chip'
-import {useEffect, useState} from "react";
+import { useEffect, useState } from 'react'
 
 interface Props {
   direction: 'ltr' | 'rtl'
@@ -35,10 +35,7 @@ const CustomTooltip = (props: TooltipProps<any, any>) => {
 }
 
 const RechartsLineChart = ({ direction }: Props) => {
-
   const [data, setData] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
 
   const MINUTE_MS = 50000
 
@@ -49,19 +46,17 @@ const RechartsLineChart = ({ direction }: Props) => {
         .then(data => {
           console.log(data)
           setData(data)
-          setLoading(false)
         })
         .catch(error => {
-          setError(error)
-          setLoading(false)
+          console.log(error)
         })
     }
     fetchOrdersPerDay()
     const interval = setInterval(() => {
-    fetchOrdersPerDay();
+      fetchOrdersPerDay()
     }, MINUTE_MS)
 
-return () => clearInterval(interval)
+    return () => clearInterval(interval)
   }, [])
 
   return (
@@ -81,7 +76,8 @@ return () => clearInterval(interval)
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Typography variant='h6' sx={{ mr: 5 }}>
               {data.reduce<number>((accumulator, obj) => {
-                return accumulator + obj.pv;
+                // @ts-ignore
+                return accumulator + obj.pv
               }, 0)}
             </Typography>
             <CustomChip
@@ -106,7 +102,7 @@ return () => clearInterval(interval)
               <XAxis dataKey='label' reversed={direction === 'rtl'} />
               <YAxis orientation={direction === 'rtl' ? 'right' : 'left'} />
               <Tooltip content={CustomTooltip} />
-              <Line dataKey='pv' stroke='#ff4d49' strokeWidth={3} animationEasing={"linear"} />
+              <Line dataKey='pv' stroke='#ff4d49' strokeWidth={3} animationEasing={'linear'} />
             </LineChart>
           </ResponsiveContainer>
         </Box>

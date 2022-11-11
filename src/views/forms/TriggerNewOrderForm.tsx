@@ -9,44 +9,44 @@ import InputAdornment from '@mui/material/InputAdornment'
 
 // ** Icons Imports
 import { CartArrowUp } from 'mdi-material-ui'
-import React, {useState} from "react";
-import toast from "react-hot-toast";
-import {green} from "@mui/material/colors";
-import CircularProgress from "@mui/material/CircularProgress";
-import Alert from "@mui/material/Alert";
+import React, { useState } from 'react'
+import toast from 'react-hot-toast'
+import { green } from '@mui/material/colors'
+import CircularProgress from '@mui/material/CircularProgress'
+import Alert from '@mui/material/Alert'
 
 const TriggerNewOrderForm = () => {
-  const [data, setData] = useState(null);
-  const [numOrders, setnumOrders] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState(null)
+  const [numOrders, setnumOrders] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleClick = async () => {
-    setIsLoading(true);
+    setIsLoading(true)
 
     try {
       const response = await fetch(`/api/simulate-orders?numOrders=${numOrders}`, {
         method: 'POST',
         headers: {
-          Accept: 'application/json',
-        },
-      });
+          Accept: 'application/json'
+        }
+      })
 
       if (!response.ok) {
-        throw new Error(`Error! status: ${response.status}`);
+        throw new Error(`Error! status: ${response.status}`)
       }
-      const result = await response.json();
-      console.log(result);
-      setData(result.statusText);
-      toast.success('Order placed successfully!');
-    } catch ({message}) {
+      const result = await response.json()
+      console.log(result)
+      setData(result.statusText)
+      toast.success('Order placed successfully!')
+    } catch ({ message }) {
       // @ts-ignore
-      toast.error(message);
+      toast.error(message)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
   }
 
-  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>)=> {
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setnumOrders(Number(e.target.value))
   }
 
@@ -85,13 +85,11 @@ const TriggerNewOrderForm = () => {
                     top: '50%',
                     left: '50%',
                     marginTop: '-12px',
-                    marginLeft: '-12px',
+                    marginLeft: '-12px'
                   }}
                 />
               )}
-              {data && (
-                <Alert severity="success">{data}</Alert>
-              )}
+              {data && <Alert severity='success'>{data}</Alert>}
             </Grid>
           </Grid>
         </form>
