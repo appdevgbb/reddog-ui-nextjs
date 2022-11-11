@@ -15,7 +15,7 @@ To run locally with env vars
 
 1.  add a `.env.local` file to the root with the following:
 ```shell
-NEXT_PUBLIC_BING_MAPS_KEY=<Your_Bing_Maps_Api_Key>
+NEXT_PUBLIC_AZ_MAPS_KEY=<Your_Bing_Maps_Api_Key>
 ```
 2. then, run
 ```shell

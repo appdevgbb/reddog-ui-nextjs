@@ -3,7 +3,12 @@ import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
-import BingMapsReact from 'bingmaps-react'
+import dynamic from 'next/dynamic'
+
+const DynamicComponentWithNoSSR = dynamic(
+  () => import('../../@core/components/mapDynamicComponent'),
+  {loading: () => <p>Loading React azure maps ...</p>, ssr: false}
+)
 
 const Locations = () => {
   return (
@@ -12,17 +17,7 @@ const Locations = () => {
         <Card>
           <CardHeader title='Store Locations'></CardHeader>
           <CardContent>
-          <BingMapsReact
-      bingMapsKey={process.env.NEXT_PUBLIC_BING_MAPS_KEY}
-      height="800px"
-      mapOptions={{
-        navigationBarMode: "square",
-      }}
-      width="100%"
-      viewOptions={{
-        mapTypeId: "road"
-      }}
-    />
+            <DynamicComponentWithNoSSR/>
           </CardContent>
         </Card>
       </Grid>

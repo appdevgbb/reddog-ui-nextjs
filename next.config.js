@@ -11,7 +11,7 @@ const withTM = require('next-transpile-modules')([
   '@fullcalendar/timegrid'
 ])
 
-//const BING_MAPS_KEY = process.env.BING_MAPS_KEY
+//const NEXT_PUBLIC_AZ_MAPS_KEY = process.env.NEXT_PUBLIC_AZ_MAPS_KEY
 
 module.exports = withTM({
   trailingSlash: true,
@@ -21,7 +21,7 @@ module.exports = withTM({
     jsconfigPaths: true // enables it for both jsconfig.json and tsconfig.json
   },
   env:{
-    BING_MAPS_KEY: process.env.BING_MAPS_KEY
+    NEXT_PUBLIC_AZ_MAPS_KEY: process.env.NEXT_PUBLIC_AZ_MAPS_KEY
   },
   webpack: config => {
     config.resolve.alias = {
