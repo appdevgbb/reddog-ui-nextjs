@@ -40,4 +40,8 @@ EXPOSE 3000
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry.
 ENV SERVER_URL http://localhost:8087
+ENV VIRTUAL_CUSTOMERS_URL=http://localhost:8091
+ENV ORDERS_URL=http://localhost:8082
+ENV ACCOUNTING_URL=http://localhost:8087
+ENV OPENAI_URL=http://127.0.0.1:8000
 CMD ["yarn", "start"]
