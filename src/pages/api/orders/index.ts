@@ -1,12 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next/types'
 
 export default async function userHandler(req: NextApiRequest, res: NextApiResponse) {
-
   const SERVER_URL = process.env.SERVER_URL
 
   const {
     query: { id, name },
-    method,
+    method
   } = req
 
   switch (method) {

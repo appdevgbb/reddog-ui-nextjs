@@ -3,12 +3,10 @@ import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import { useTheme } from '@mui/material/styles'
 import CardHeader from '@mui/material/CardHeader'
-import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
 // ** Icons Imports
-import DotsVertical from 'mdi-material-ui/DotsVertical'
 import { HandPointingLeft } from 'mdi-material-ui'
 
 // ** Third Party Imports

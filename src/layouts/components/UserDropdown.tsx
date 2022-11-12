@@ -129,11 +129,7 @@ const UserDropdown = (props: Props) => {
                 horizontal: 'right'
               }}
             >
-              <Avatar
-                alt='John Doe'
-                src='/images/avatars/1.png'
-                sx={{ width: '2.5rem', height: '2.5rem' }}
-              />
+              <Avatar alt='John Doe' src='/images/avatars/1.png' sx={{ width: '2.5rem', height: '2.5rem' }} />
             </Badge>
             <Box
               sx={{
@@ -144,10 +140,7 @@ const UserDropdown = (props: Props) => {
               }}
             >
               <Typography sx={{ fontWeight: 600 }}>John Doe</Typography>
-              <Typography
-                variant='body2'
-                sx={{ fontSize: '0.8rem', color: 'text.disabled' }}
-              >
+              <Typography variant='body2' sx={{ fontSize: '0.8rem', color: 'text.disabled' }}>
                 Admin
               </Typography>
             </Box>

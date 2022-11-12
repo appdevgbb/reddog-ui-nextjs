@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 
 // ** Third Party Imports
-import {Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, TooltipProps, XAxis, YAxis} from 'recharts'
+import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, TooltipProps, XAxis, YAxis } from 'recharts'
 
 // ** Icons Imports
 import Circle from 'mdi-material-ui/Circle'
@@ -126,7 +126,6 @@ const CustomTooltip = (data: TooltipProps<any, any>) => {
 }
 
 const RechartsAreaChart = ({ direction }: Props) => {
-
   return (
     <Card>
       <CardHeader

@@ -1,5 +1,5 @@
 // ** React Imports
-import {MouseEvent, ReactElement, useCallback, useEffect, useState} from 'react'
+import { MouseEvent, ReactElement, useCallback, useEffect, useState } from 'react'
 
 // ** Next Import
 import Link from 'next/link'
@@ -9,12 +9,11 @@ import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Menu from '@mui/material/Menu'
 import Grid from '@mui/material/Grid'
-import {DataGrid} from '@mui/x-data-grid'
+import { DataGrid } from '@mui/x-data-grid'
 import MenuItem from '@mui/material/MenuItem'
-import {styled} from '@mui/material/styles'
+import { styled } from '@mui/material/styles'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
-import {SelectChangeEvent} from '@mui/material/Select'
 
 // ** Icons Imports
 import Laptop from 'mdi-material-ui/Laptop'
@@ -27,20 +26,19 @@ import DeleteOutline from 'mdi-material-ui/DeleteOutline'
 import AccountOutline from 'mdi-material-ui/AccountOutline'
 
 // ** Store Imports
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 // ** Custom Components Imports
 import CustomChip from 'src/@core/components/mui/chip'
 
 // ** Utils Import
-
 // ** Actions Imports
-import {deleteUser, fetchData} from 'src/store/user'
+import { deleteUser, fetchData } from 'src/store/user'
 
 // ** Types Imports
-import {AppDispatch, RootState} from 'src/store'
-import {ThemeColor} from 'src/@core/layouts/types'
-import {UsersType} from 'src/types/userTypes'
+import { AppDispatch, RootState } from 'src/store'
+import { ThemeColor } from 'src/@core/layouts/types'
+import { UsersType } from 'src/types/userTypes'
 
 // ** Custom Components Imports
 import TableHeader from 'src/views/list/TableHeader'
@@ -72,7 +70,6 @@ const userStatusObj: UserStatusType = {
   pending: 'warning',
   inactive: 'secondary'
 }
-
 
 // ** Styled component for the link inside menu
 const MenuItemLink = styled('a')(({ theme }) => ({
@@ -249,15 +246,15 @@ const columns = [
 
 const UserList = () => {
   // ** State
-  const [role, setRole] = useState<string>('')
-  const [plan, setPlan] = useState<string>('')
+  const [role] = useState<string>('')
+  const [plan] = useState<string>('')
   const [value, setValue] = useState<string>('')
-  const [status, setStatus] = useState<string>('')
+  const [status] = useState<string>('')
   const [pageSize, setPageSize] = useState<number>(10)
   const [addProductOpen, setAddProductOpen] = useState<boolean>(false)
 
   // ** Hooks
-  console.log("UserList")
+  console.log('UserList')
   const dispatch = useDispatch<AppDispatch>()
   const store = useSelector((state: RootState) => state.user)
 
@@ -278,7 +275,7 @@ const UserList = () => {
 
   const toggleAddProductDrawer = () => setAddProductOpen(!addProductOpen)
 
-  console.log("before return")
+  console.log('before return')
   console.log(store)
 
   return (
@@ -291,7 +288,7 @@ const UserList = () => {
             rows={store.data}
             columns={columns}
             checkboxSelection
-            getRowId={(row) => row.productId}
+            getRowId={row => row.productId}
             pageSize={pageSize}
             disableSelectionOnClick
             rowsPerPageOptions={[10, 25, 50]}

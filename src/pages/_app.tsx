@@ -7,10 +7,6 @@ import { Router } from 'next/router'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 
-
-
-
-
 // ** Loader Import
 import NProgress from 'nprogress'
 
@@ -61,8 +57,8 @@ import 'react-perfect-scrollbar/dist/css/styles.css'
 
 // ** Global css styles
 import '../../styles/globals.css'
-import {store} from "../store";
-import {Provider} from "react-redux";
+import { store } from '../store'
+import { Provider } from 'react-redux'
 
 // ** Extend App Props with Emotion
 type ExtendedAppProps = AppProps & {
@@ -121,10 +117,7 @@ const App = (props: ExtendedAppProps) => {
       <CacheProvider value={emotionCache}>
         <Head>
           <title>{`${themeConfig.templateName} - Pharmacy`}</title>
-          <meta
-            name='description'
-            content={`${themeConfig.templateName} – Frontend for Cloud-native GBB Sample`}
-          />
+          <meta name='description' content={`${themeConfig.templateName} – Frontend for Cloud-native GBB Sample`} />
           <meta name='keywords' content='Azure, Microservices, Frontend' />
           <meta name='viewport' content='initial-scale=1, width=device-width' />
         </Head>
@@ -152,7 +145,7 @@ const App = (props: ExtendedAppProps) => {
           </SettingsProvider>
         </AuthProvider>
       </CacheProvider>
-  </Provider>
+    </Provider>
   )
 }
 

@@ -1,13 +1,13 @@
 // ** React Imports
-import {useContext} from 'react'
+import { useContext } from 'react'
 
 // ** Context Imports
-import {AbilityContext} from 'src/layouts/components/acl/Can'
+import { AbilityContext } from 'src/layouts/components/acl/Can'
 
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
-import TriggerNewOrderForm from "../../views/forms/TriggerNewOrderForm";
-import SimulatedOrdersTable from "../../views/table/data-grid/SimulatedOrdersTable";
+import TriggerNewOrderForm from '../../views/forms/TriggerNewOrderForm'
+import SimulatedOrdersTable from '../../views/table/data-grid/SimulatedOrdersTable'
 
 const VirtualCustomers = () => {
   // ** Hooks

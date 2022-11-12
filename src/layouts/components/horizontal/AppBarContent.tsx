@@ -2,7 +2,7 @@
 import Box from '@mui/material/Box'
 
 // ** Type Import
-import {Settings} from 'src/@core/context/settingsContext'
+import { Settings } from 'src/@core/context/settingsContext'
 
 // ** Components
 import ModeToggler from 'src/@core/layouts/components/shared-components/ModeToggler'

@@ -22,9 +22,10 @@ export const fetchData = createAsyncThunk('appUsers/fetchData', async (params: D
   const response = await axios.get('/api/products', {
     params
   })
-  console.log("fetchData response", response)
+  console.log('fetchData response', response)
 
   return response.data
+
   // return {
   //   "allData": [
   //     {

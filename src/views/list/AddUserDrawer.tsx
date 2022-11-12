@@ -2,31 +2,31 @@
 // ** MUI Imports
 import Drawer from '@mui/material/Drawer'
 import Button from '@mui/material/Button'
-import {styled} from '@mui/material/styles'
+import { styled } from '@mui/material/styles'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import Box, {BoxProps} from '@mui/material/Box'
+import Box, { BoxProps } from '@mui/material/Box'
 import FormControl from '@mui/material/FormControl'
 import FormHelperText from '@mui/material/FormHelperText'
 
 // ** Third Party Imports
 import * as yup from 'yup'
-import {yupResolver} from '@hookform/resolvers/yup'
-import {Controller, useForm} from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { Controller, useForm } from 'react-hook-form'
 
 // ** Icons Imports
 import Close from 'mdi-material-ui/Close'
 
 // ** Store Imports
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 // ** Actions Imports
-import {addUser} from 'src/store/user'
+import { addUser } from 'src/store/user'
 
 // ** Types Imports
-import {AppDispatch} from 'src/store'
-import Grid from "@mui/material/Grid";
-import DialogEditUserInfo from "../pages/dialog/DialogEditUserInfo";
+import { AppDispatch } from 'src/store'
+import Grid from '@mui/material/Grid'
+import DialogEditUserInfo from '../pages/dialog/DialogEditUserInfo'
 
 interface SidebarAddProductType {
   open: boolean
@@ -126,7 +126,7 @@ const SidebarAddProduct = (props: SidebarAddProductType) => {
       <Box sx={{ p: 5 }}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sx={{ mb: '1em'}}>
+            <Grid item xs={12} sx={{ mb: '1em' }}>
               <DialogEditUserInfo />
             </Grid>
           </Grid>
@@ -145,7 +145,9 @@ const SidebarAddProduct = (props: SidebarAddProductType) => {
                 />
               )}
             />
-            {errors.productName && <FormHelperText sx={{ color: 'error.main' }}>{errors.productName.message}</FormHelperText>}
+            {errors.productName && (
+              <FormHelperText sx={{ color: 'error.main' }}>{errors.productName.message}</FormHelperText>
+            )}
           </FormControl>
           <FormControl fullWidth sx={{ mb: 6 }}>
             <Controller
@@ -162,7 +164,9 @@ const SidebarAddProduct = (props: SidebarAddProductType) => {
                 />
               )}
             />
-            {errors.categoryId && <FormHelperText sx={{ color: 'error.main' }}>{errors.categoryId.message}</FormHelperText>}
+            {errors.categoryId && (
+              <FormHelperText sx={{ color: 'error.main' }}>{errors.categoryId.message}</FormHelperText>
+            )}
           </FormControl>
           <FormControl fullWidth sx={{ mb: 6 }}>
             <Controller
@@ -180,7 +184,9 @@ const SidebarAddProduct = (props: SidebarAddProductType) => {
                 />
               )}
             />
-            {errors.description && <FormHelperText sx={{ color: 'error.main' }}>{errors.description.message}</FormHelperText>}
+            {errors.description && (
+              <FormHelperText sx={{ color: 'error.main' }}>{errors.description.message}</FormHelperText>
+            )}
           </FormControl>
           <FormControl fullWidth sx={{ mb: 6 }}>
             <Controller
@@ -214,7 +220,9 @@ const SidebarAddProduct = (props: SidebarAddProductType) => {
                 />
               )}
             />
-            {errors.unitPrice && <FormHelperText sx={{ color: 'error.main' }}>{errors.unitPrice.message}</FormHelperText>}
+            {errors.unitPrice && (
+              <FormHelperText sx={{ color: 'error.main' }}>{errors.unitPrice.message}</FormHelperText>
+            )}
           </FormControl>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Button size='large' type='submit' variant='contained' sx={{ mr: 3 }}>

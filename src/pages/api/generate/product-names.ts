@@ -1,13 +1,9 @@
-import type {NextApiRequest, NextApiResponse} from 'next/types'
+import type { NextApiRequest, NextApiResponse } from 'next/types'
 
 export default async function userHandler(req: NextApiRequest, res: NextApiResponse) {
-
   const OPENAI_URL = process.env.OPENAI_URL
 
-  const {
-    body,
-    method,
-  } = req
+  const { body, method } = req
   switch (method) {
     case 'POST':
       try {
