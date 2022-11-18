@@ -3,6 +3,7 @@
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import {GridRowId} from '@mui/x-data-grid'
+import toast from "react-hot-toast";
 
 interface InflightOrderHeaderProps {
   selectedRows: GridRowId[]
@@ -11,6 +12,32 @@ interface InflightOrderHeaderProps {
 const InflightOrderHeader = (props: InflightOrderHeaderProps) => {
   // ** Props
   const { selectedRows } = props
+
+  console.log(selectedRows)
+  const completeSelectedOrders = async () => {
+    try {
+      const response = await fetch(`/api/orders/complete`, {
+        method: 'POST',
+        body: JSON.stringify(selectedRows),
+        headers: {
+          Accept: 'application/json'
+        }
+      })
+
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`)
+      }
+      const result = await response.json()
+      console.log(result)
+      toast.success('Successfully generated product name!')
+    } catch ({ message }) {
+      // @ts-ignore
+      toast.error(message)
+    } finally {
+      // @ts-ignore
+      toast.dismiss()
+    }
+  }
 
   return (
     <Box
@@ -27,7 +54,8 @@ const InflightOrderHeader = (props: InflightOrderHeaderProps) => {
       <Button
         sx={{ mb: 2 }}
         variant='contained'
-        disabled={selectedRows && selectedRows.length === 0}>
+        disabled={selectedRows && selectedRows.length === 0}
+        onClick={completeSelectedOrders}>
         Complete Selected Order(s)
       </Button>
     </Box>

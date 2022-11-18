@@ -1,21 +1,20 @@
 // ** React Imports
-import { useCallback, useEffect, useState } from 'react'
+import {useCallback, useEffect, useState} from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
-import { DataGrid, GridColumns, GridRenderCellParams, GridSortModel, GridRowId } from '@mui/x-data-grid'
+import {DataGrid, GridColumns, GridRenderCellParams, GridRowId, GridSortModel} from '@mui/x-data-grid'
 import InflightOrderHeader from "../../list/InflightOrderHeader";
 
 // ** ThirdParty Components
 import axios from 'axios'
 
 // ** Custom Components
-import ServerSideToolbar from 'src/views/table/data-grid/ServerSideToolbar'
 
 // ** Types Imports
-import { OrdersGridRowType } from 'src/@core/utils/types'
+import {OrdersGridRowType} from 'src/@core/utils/types'
 
 type SortType = 'asc' | 'desc' | undefined | null
 
