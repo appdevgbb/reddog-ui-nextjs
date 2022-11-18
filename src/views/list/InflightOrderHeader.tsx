@@ -6,15 +6,18 @@ import {GridRowId} from '@mui/x-data-grid'
 import toast from "react-hot-toast";
 
 interface InflightOrderHeaderProps {
-  selectedRows: GridRowId[]
+  selectedRows: GridRowId[],
+  handleCompleteOrder: () => void,
+  setLoading: (loading: boolean) => void
 }
 
 const InflightOrderHeader = (props: InflightOrderHeaderProps) => {
   // ** Props
-  const { selectedRows } = props
+  const { selectedRows, handleCompleteOrder, setLoading } = props
 
   console.log(selectedRows)
   const completeSelectedOrders = async () => {
+    setLoading(true)
     try {
       const response = await fetch(`/api/orders/complete`, {
         method: 'POST',
@@ -29,7 +32,8 @@ const InflightOrderHeader = (props: InflightOrderHeaderProps) => {
       }
       const result = await response.json()
       console.log(result)
-      toast.success('Successfully generated product name!')
+      toast.success('Successfully completed orders')
+      handleCompleteOrder()
     } catch ({ message }) {
       // @ts-ignore
       toast.error(message)

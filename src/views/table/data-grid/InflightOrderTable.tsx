@@ -12,9 +12,10 @@ import InflightOrderHeader from "../../list/InflightOrderHeader";
 import axios from 'axios'
 
 // ** Custom Components
-
 // ** Types Imports
 import {OrdersGridRowType} from 'src/@core/utils/types'
+import {toast} from "react-hot-toast";
+import {LinearProgress} from "@mui/material";
 
 type SortType = 'asc' | 'desc' | undefined | null
 
@@ -85,6 +86,7 @@ const InflightOrderTable = () => {
   const [rows, setRows] = useState<OrdersGridRowType[]>([])
   const [sortColumn, setSortColumn] = useState<string>('full_name')
   const [selectedRows, setSelectedRows] = useState<GridRowId[]>([])
+  const [loading, setLoading] = useState<boolean>(false)
 
   function loadServerRows(currentPage: number, data: OrdersGridRowType[]) {
     return data.slice(currentPage * pageSize, (currentPage + 1) * pageSize)
@@ -123,9 +125,17 @@ const InflightOrderTable = () => {
     }
   }
 
+  function handleCompleteOrder() {
+    fetchTableData(sort, sortColumn).then(() => {
+      toast.success('Order completed successfully!')
+      setSelectedRows([])
+      setLoading(false)
+    })
+  }
+
   return (
     <Card>
-      <InflightOrderHeader selectedRows={selectedRows} />
+      <InflightOrderHeader selectedRows={selectedRows} handleCompleteOrder={handleCompleteOrder} setLoading={setLoading} />
       <DataGrid
         autoHeight
         pagination
@@ -136,6 +146,10 @@ const InflightOrderTable = () => {
         pageSize={pageSize}
         sortingMode='server'
         paginationMode='server'
+        components={{
+          LoadingOverlay: LinearProgress,
+        }}
+        loading={loading}
         onSortModelChange={handleSortModel}
         getRowId={row => row.orderId}
         rowsPerPageOptions={[7, 10, 25, 50]}
