@@ -6,7 +6,7 @@ import { AbilityContext } from 'src/layouts/components/acl/Can'
 
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
-import TableServerSide from '../../views/table/data-grid/TableServerSide'
+import InflightOrderTable from '../../views/table/data-grid/InflightOrderTable'
 
 const VirtualWorkers = () => {
   // ** Hooks
@@ -15,11 +15,12 @@ const VirtualWorkers = () => {
   return (
     <Grid container spacing={6}>
       <Grid item md={6} xs={12}>
-        <TableServerSide />
+
+        <InflightOrderTable />
       </Grid>
       {ability?.can('read', 'analytics') ? (
         <Grid item md={6} xs={12}>
-          <TableServerSide />
+          <InflightOrderTable />
         </Grid>
       ) : null}
     </Grid>

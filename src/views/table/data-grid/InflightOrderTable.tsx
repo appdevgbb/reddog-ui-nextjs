@@ -5,8 +5,8 @@ import { useCallback, useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import { DataGrid, GridColumns, GridRenderCellParams, GridSortModel } from '@mui/x-data-grid'
+import { DataGrid, GridColumns, GridRenderCellParams, GridSortModel, GridRowId } from '@mui/x-data-grid'
+import InflightOrderHeader from "../../list/InflightOrderHeader";
 
 // ** ThirdParty Components
 import axios from 'axios'
@@ -77,7 +77,7 @@ const columns: GridColumns = [
   }
 ]
 
-const TableServerSide = () => {
+const InflightOrderTable = () => {
   // ** State
   const [page, setPage] = useState(0)
   const [total, setTotal] = useState<number>(0)
@@ -85,6 +85,7 @@ const TableServerSide = () => {
   const [pageSize, setPageSize] = useState<number>(7)
   const [rows, setRows] = useState<OrdersGridRowType[]>([])
   const [sortColumn, setSortColumn] = useState<string>('full_name')
+  const [selectedRows, setSelectedRows] = useState<GridRowId[]>([])
 
   function loadServerRows(currentPage: number, data: OrdersGridRowType[]) {
     return data.slice(currentPage * pageSize, (currentPage + 1) * pageSize)
@@ -125,7 +126,7 @@ const TableServerSide = () => {
 
   return (
     <Card>
-      <CardHeader title='In-flight orders' />
+      <InflightOrderHeader selectedRows={selectedRows} />
       <DataGrid
         autoHeight
         pagination
@@ -140,11 +141,11 @@ const TableServerSide = () => {
         getRowId={row => row.orderId}
         rowsPerPageOptions={[7, 10, 25, 50]}
         onPageChange={newPage => setPage(newPage)}
-        components={{ Toolbar: ServerSideToolbar }}
+        onSelectionModelChange={rows => setSelectedRows(rows)}
         onPageSizeChange={newPageSize => setPageSize(newPageSize)}
       />
     </Card>
   )
 }
 
-export default TableServerSide
+export default InflightOrderTable
