@@ -70,7 +70,7 @@ const DialogEditUserInfo = () => {
           GPT-3 helper
         </Typography>
         <Typography sx={{ mb: 3 }}>
-          Need help with Product naming? Use Azure OpenAI's GPT-3 model (yes, same one that is used to train Dall-E!)
+          Use Azure OpenAI's GPT-3 model (yes, same one that is used to train Dall-E) to generate product tags
         </Typography>
         <Button variant='contained' onClick={() => setShow(true)}>
           Show
@@ -97,7 +97,7 @@ const DialogEditUserInfo = () => {
             <Typography variant='h5' sx={{ mb: 3, lineHeight: '2rem' }}>
               Azure OpenAI Service
             </Typography>
-            <Typography variant='body2'>GPT-3 model to generate product names</Typography>
+            <Typography variant='body2'>GPT-3 model to generate product tags</Typography>
           </Box>
           <Grid container spacing={6}>
             <Grid item xs={12}>
@@ -141,7 +141,7 @@ const DialogEditUserInfo = () => {
             <Grid item xs={12}>
               <Fab color='secondary' variant='extended' onClick={() => handleGetRec()}>
                 <RobotHappyOutline sx={{ mr: 1 }} />
-                Get recommendations
+                Get product tags from generative ai
               </Fab>
             </Grid>
             {openAiResponse && (
