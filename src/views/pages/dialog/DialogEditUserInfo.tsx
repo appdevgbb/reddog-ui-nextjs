@@ -17,8 +17,8 @@ import DialogActions from '@mui/material/DialogActions'
 
 // ** Icons Imports
 import Close from 'mdi-material-ui/Close'
-import { BookmarkOutline, MessageOutline, RobotHappyOutline } from 'mdi-material-ui'
-import { Fab, InputAdornment } from '@mui/material'
+import {BookmarkOutline, DeleteOutline, MessageOutline, RobotHappyOutline} from 'mdi-material-ui'
+import {Chip, Fab, InputAdornment} from '@mui/material'
 import toast from 'react-hot-toast'
 import { Alert, AlertTitle } from '@mui/material'
 
@@ -34,7 +34,7 @@ const DialogEditUserInfo = () => {
   const [show, setShow] = useState<boolean>(false)
   const [seed, setSeed] = useState<string>('')
   const [description, setDescription] = useState<string>('')
-  const [openAiResponse, setOpenAiResponse] = useState<string>('')
+  const [openAiResponse, setOpenAiResponse] = useState<string[]>([])
 
   const handleGetRec = async () => {
     try {
@@ -51,7 +51,7 @@ const DialogEditUserInfo = () => {
       }
       const result = await response.json()
       console.log(result)
-      setOpenAiResponse(result.output)
+      setOpenAiResponse(result.output.split(",").slice(1))
       toast.success('Successfully generated product name!')
     } catch ({ message }) {
       // @ts-ignore
@@ -60,6 +60,12 @@ const DialogEditUserInfo = () => {
       // @ts-ignore
       toast.dismiss()
     }
+  }
+
+  function handleDelete(index: number) {
+    const temp = [...openAiResponse];
+    temp.splice(index, 1);
+    setOpenAiResponse(temp);
   }
 
   return (
@@ -144,11 +150,13 @@ const DialogEditUserInfo = () => {
                 Get product tags from generative ai
               </Fab>
             </Grid>
-            {openAiResponse && (
+            {openAiResponse.length > 0 && (
               <Grid item xs={12}>
                 <Alert severity='success'>
                   <AlertTitle>Response from GPT-3</AlertTitle>
-                  {openAiResponse}
+                  {openAiResponse.map((item, index) => (
+                    <Chip key={index} label={item} color='primary' onDelete={() => handleDelete(index)} deleteIcon={<DeleteOutline />} />
+                  ))}
                 </Alert>
               </Grid>
             )}
@@ -156,7 +164,7 @@ const DialogEditUserInfo = () => {
         </DialogContent>
         <DialogActions sx={{ pb: { xs: 8, sm: 12.5 }, justifyContent: 'center' }}>
           <Button variant='contained' sx={{ mr: 2 }} onClick={() => setShow(false)}>
-            Use as Product Name
+            Use for product tags
           </Button>
           <Button variant='outlined' color='secondary' onClick={() => setShow(false)}>
             Discard

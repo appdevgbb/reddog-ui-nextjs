@@ -175,9 +175,33 @@ const SidebarAddProduct = (props: SidebarAddProductType) => {
               rules={{ required: true }}
               render={({ field: { value, onChange } }) => (
                 <TextField
+                  multiline
+                  maxRows={4}
+                  variant='filled'
                   type='description'
                   value={value}
-                  label='Description'
+                  label='Long Description'
+                  onChange={onChange}
+                  placeholder='Alleviates pain'
+                  error={Boolean(errors.description)}
+                />
+              )}
+            />
+            {errors.description && (
+              <FormHelperText sx={{ color: 'error.main' }}>{errors.description.message}</FormHelperText>
+            )}
+          </FormControl>
+
+          <FormControl fullWidth sx={{ mb: 6 }}>
+            <Controller
+              name='description'
+              control={control}
+              rules={{ required: true }}
+              render={({ field: { value, onChange } }) => (
+                <TextField
+                  type='description'
+                  value={value}
+                  label='generated tldr'
                   onChange={onChange}
                   placeholder='Alleviates pain'
                   error={Boolean(errors.description)}
