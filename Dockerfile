@@ -33,8 +33,9 @@ COPY --from=builder /app/next-env.d.ts ./next-env.d.ts
 
 USER nextjs
 
-# Expose
-EXPOSE 3000
+# Expose (for some reason, Azure Spring Apps requires port 1025)
+# EXPOSE 3000
+EXPOSE 1025
 
 # Parameterize env variables
 ENV VIRTUAL_CUSTOMERS_URL=http://localhost:8091
