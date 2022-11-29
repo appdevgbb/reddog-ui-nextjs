@@ -42,6 +42,7 @@ ENV VIRTUAL_CUSTOMERS_URL=http://localhost:8091
 ENV ORDERS_URL=http://localhost:8082
 ENV ACCOUNTING_URL=http://localhost:8087
 ENV OPENAI_URL=http://127.0.0.1:8000
+ENV PORT={PORT}
 
 # Start next
 CMD ["yarn", "start"]
