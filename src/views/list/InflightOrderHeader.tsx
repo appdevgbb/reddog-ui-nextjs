@@ -2,12 +2,12 @@
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import {GridRowId} from '@mui/x-data-grid'
-import toast from "react-hot-toast";
+import { GridRowId } from '@mui/x-data-grid'
+import toast from 'react-hot-toast'
 
 interface InflightOrderHeaderProps {
-  selectedRows: GridRowId[],
-  handleCompleteOrder: () => void,
+  selectedRows: GridRowId[]
+  handleCompleteOrder: () => void
   setLoading: (loading: boolean) => void
 }
 
@@ -59,7 +59,8 @@ const InflightOrderHeader = (props: InflightOrderHeaderProps) => {
         sx={{ mb: 2 }}
         variant='contained'
         disabled={selectedRows && selectedRows.length === 0}
-        onClick={completeSelectedOrders}>
+        onClick={completeSelectedOrders}
+      >
         Complete Selected Order(s)
       </Button>
     </Box>

@@ -1,21 +1,21 @@
 // ** React Imports
-import {useCallback, useEffect, useState} from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
-import {DataGrid, GridColumns, GridRenderCellParams, GridRowId, GridSortModel} from '@mui/x-data-grid'
-import InflightOrderHeader from "../../list/InflightOrderHeader";
+import { DataGrid, GridColumns, GridRenderCellParams, GridRowId, GridSortModel } from '@mui/x-data-grid'
+import InflightOrderHeader from '../../list/InflightOrderHeader'
 
 // ** ThirdParty Components
 import axios from 'axios'
 
 // ** Custom Components
 // ** Types Imports
-import {OrdersGridRowType} from 'src/@core/utils/types'
-import {toast} from "react-hot-toast";
-import {LinearProgress} from "@mui/material";
+import { OrdersGridRowType } from 'src/@core/utils/types'
+import { toast } from 'react-hot-toast'
+import { LinearProgress } from '@mui/material'
 
 type SortType = 'asc' | 'desc' | undefined | null
 
@@ -135,7 +135,11 @@ const InflightOrderTable = () => {
 
   return (
     <Card>
-      <InflightOrderHeader selectedRows={selectedRows} handleCompleteOrder={handleCompleteOrder} setLoading={setLoading} />
+      <InflightOrderHeader
+        selectedRows={selectedRows}
+        handleCompleteOrder={handleCompleteOrder}
+        setLoading={setLoading}
+      />
       <DataGrid
         autoHeight
         pagination
@@ -147,7 +151,7 @@ const InflightOrderTable = () => {
         sortingMode='server'
         paginationMode='server'
         components={{
-          LoadingOverlay: LinearProgress,
+          LoadingOverlay: LinearProgress
         }}
         loading={loading}
         onSortModelChange={handleSortModel}

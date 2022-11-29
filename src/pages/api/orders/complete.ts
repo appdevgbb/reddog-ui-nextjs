@@ -3,10 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next/types'
 export default async function userHandler(req: NextApiRequest, res: NextApiResponse) {
   const WORKER_URL = process.env.WORKER_URL
 
-  const {
-    body,
-    method
-  } = req
+  const { body, method } = req
   console.log(body)
   switch (method) {
     case 'POST':

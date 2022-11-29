@@ -17,8 +17,8 @@ import DialogActions from '@mui/material/DialogActions'
 
 // ** Icons Imports
 import Close from 'mdi-material-ui/Close'
-import {BookmarkOutline, DeleteOutline, MessageOutline, RobotHappyOutline} from 'mdi-material-ui'
-import {Chip, Fab, InputAdornment} from '@mui/material'
+import { BookmarkOutline, DeleteOutline, MessageOutline, RobotHappyOutline } from 'mdi-material-ui'
+import { Chip, Fab, InputAdornment } from '@mui/material'
 import toast from 'react-hot-toast'
 import { Alert, AlertTitle } from '@mui/material'
 
@@ -51,7 +51,7 @@ const DialogEditUserInfo = () => {
       }
       const result = await response.json()
       console.log(result)
-      setOpenAiResponse(result.output.split(",").slice(1))
+      setOpenAiResponse(result.output.split(',').slice(1))
       toast.success('Successfully generated product name!')
     } catch ({ message }) {
       // @ts-ignore
@@ -63,9 +63,9 @@ const DialogEditUserInfo = () => {
   }
 
   function handleDelete(index: number) {
-    const temp = [...openAiResponse];
-    temp.splice(index, 1);
-    setOpenAiResponse(temp);
+    const temp = [...openAiResponse]
+    temp.splice(index, 1)
+    setOpenAiResponse(temp)
   }
 
   return (
@@ -155,7 +155,13 @@ const DialogEditUserInfo = () => {
                 <Alert severity='success'>
                   <AlertTitle>Response from GPT-3</AlertTitle>
                   {openAiResponse.map((item, index) => (
-                    <Chip key={index} label={item} color='primary' onDelete={() => handleDelete(index)} deleteIcon={<DeleteOutline />} />
+                    <Chip
+                      key={index}
+                      label={item}
+                      color='primary'
+                      onDelete={() => handleDelete(index)}
+                      deleteIcon={<DeleteOutline />}
+                    />
                   ))}
                 </Alert>
               </Grid>
