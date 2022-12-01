@@ -15,7 +15,6 @@ const InflightOrderHeader = (props: InflightOrderHeaderProps) => {
   // ** Props
   const { selectedRows, handleCompleteOrder, setLoading } = props
 
-  console.log(selectedRows)
   const completeSelectedOrders = async () => {
     setLoading(true)
     try {
@@ -31,7 +30,6 @@ const InflightOrderHeader = (props: InflightOrderHeaderProps) => {
         throw new Error(`Error! status: ${response.status}`)
       }
       const result = await response.json()
-      console.log(result)
       toast.success('Successfully completed orders')
       handleCompleteOrder()
     } catch ({ message }) {

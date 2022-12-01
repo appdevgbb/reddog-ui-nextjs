@@ -44,7 +44,6 @@ const RechartsLineChart = ({ direction }: Props) => {
       fetch('/api/orders/day')
         .then(response => response.json())
         .then(data => {
-          console.log(data)
           setData(data)
         })
         .catch(error => {

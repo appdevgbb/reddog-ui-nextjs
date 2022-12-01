@@ -18,7 +18,6 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
         headers: requestHeaders
       })
       const responseJson = await response.json()
-      console.log('response', responseJson)
       res.status(200).json(responseJson)
       break
     default:

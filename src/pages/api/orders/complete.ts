@@ -4,7 +4,6 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
   const WORKER_URL = process.env.WORKER_URL
 
   const { body, method } = req
-  console.log(body)
   switch (method) {
     case 'POST':
       // Get orders from backend
@@ -17,7 +16,6 @@ export default async function userHandler(req: NextApiRequest, res: NextApiRespo
         headers: requestHeaders
       })
       const responseJson = await response.json()
-      console.log('response', responseJson.status)
       res.status(200).json(responseJson)
       break
     default:

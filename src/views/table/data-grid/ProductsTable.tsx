@@ -100,7 +100,6 @@ const ProductsTable = () => {
           }
         })
         .then(res => {
-          console.log(res.data)
           setTotal(res.data.length)
           setRows(loadServerRows(page, res.data))
         })

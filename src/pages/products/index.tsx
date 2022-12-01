@@ -254,7 +254,6 @@ const UserList = () => {
   const [addProductOpen, setAddProductOpen] = useState<boolean>(false)
 
   // ** Hooks
-  console.log('UserList')
   const dispatch = useDispatch<AppDispatch>()
   const store = useSelector((state: RootState) => state.user)
 
@@ -274,9 +273,6 @@ const UserList = () => {
   }, [])
 
   const toggleAddProductDrawer = () => setAddProductOpen(!addProductOpen)
-
-  console.log('before return')
-  console.log(store)
 
   return (
     <Grid container spacing={6}>

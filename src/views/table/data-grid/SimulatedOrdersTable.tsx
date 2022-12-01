@@ -93,7 +93,7 @@ const SimulatedOrdersTable = () => {
           }
         })
         .then(res => {
-          setTotal(res.data.orderTotal)
+          setTotal(res.data.length)
           setRows(loadServerRows(page, res.data))
         })
     },

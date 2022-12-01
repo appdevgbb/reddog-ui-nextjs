@@ -33,7 +33,6 @@ const Home = () => {
       fetch('https://63594e33ff3d7bddb99ee138.mockapi.io/stats/1')
         .then(res => res.json())
         .then(data => {
-          console.log(data)
           setStats(data.stats)
         })
     }, MINUTE_MS)

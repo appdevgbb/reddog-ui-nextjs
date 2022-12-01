@@ -50,7 +50,6 @@ const DialogEditUserInfo = () => {
         throw new Error(`Error! status: ${response.status}`)
       }
       const result = await response.json()
-      console.log(result)
       setOpenAiResponse(result.output.split(',').slice(1))
       toast.success('Successfully generated product name!')
     } catch ({ message }) {
