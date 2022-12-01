@@ -6,11 +6,10 @@ import IconButton from '@mui/material/IconButton'
 import MenuIcon from 'mdi-material-ui/Menu'
 
 // ** Type Import
-import { Settings } from 'src/@core/context/settingsContext'
+import {Settings} from 'src/@core/context/settingsContext'
 
 // ** Components
 import ModeToggler from 'src/@core/layouts/components/shared-components/ModeToggler'
-import UserDropdown from 'src/layouts/components/UserDropdown'
 
 interface Props {
   hidden: boolean
@@ -35,7 +34,7 @@ const AppBarContent = (props: Props) => {
         <ModeToggler settings={settings} saveSettings={saveSettings} />
       </Box>
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>
-        <UserDropdown settings={settings} />
+        {/*<UserDropdown settings={settings} />*/}
       </Box>
     </Box>
   )
