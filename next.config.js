@@ -16,6 +16,7 @@ const withTM = require('next-transpile-modules')([
 module.exports = withTM({
   trailingSlash: true,
   reactStrictMode: false,
+  output: 'standalone',
   experimental: {
     esmExternals: false,
     jsconfigPaths: true // enables it for both jsconfig.json and tsconfig.json

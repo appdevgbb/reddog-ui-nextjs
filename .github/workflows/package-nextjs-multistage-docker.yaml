@@ -74,7 +74,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: reddog-ui-nextjs
-          file: reddog-ui-nextjs/Dockerfile
+          file: reddog-ui-nextjs/Dockerfile.standalone.multistage
           push: true
           tags: |
             ${{ needs.set-env.outputs.repository }}/${{ needs.set-env.outputs.image }}:latest
