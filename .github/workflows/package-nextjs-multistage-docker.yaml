@@ -60,8 +60,6 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
-      - name: Static HTML export with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       - name: Login to GitHub Container Registry
@@ -74,7 +72,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: reddog-ui-nextjs
-          file: reddog-ui-nextjs/Dockerfile.standalone.multistage
+          file: Dockerfile
           push: true
           tags: |
             ${{ needs.set-env.outputs.repository }}/${{ needs.set-env.outputs.image }}:latest
